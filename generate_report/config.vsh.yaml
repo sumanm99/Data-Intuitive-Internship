@@ -1,5 +1,5 @@
 functionality:
-  name: example_python_with_setup
+  name: generate_report
   description: A minimal example component.
   arguments:
     - type: file
@@ -21,7 +21,7 @@ functionality:
       required: true
   resources:
     - type: python_script
-      path: script.py
+      path: filter_timesheets.py
 platforms:
   - type: docker
     image: python:3.10-slim
@@ -34,5 +34,3 @@ platforms:
         packages:
           - anndata
           - pandas
-  - type: native
-  - type: nextflow
