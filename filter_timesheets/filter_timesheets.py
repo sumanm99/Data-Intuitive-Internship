@@ -3,10 +3,10 @@ import pandas as pd
 ## VIASH START
 #Values are not hard-coded
 par = {
-  'input': 'data.csv',
+  'input': '../data/data.csv',
   'year': 2012,
   'min_duration_per_project': 100,
-  'output': 'filtered.csv'
+  'output': '../output/filtered.csv'
 }
 ## VIASH END
 

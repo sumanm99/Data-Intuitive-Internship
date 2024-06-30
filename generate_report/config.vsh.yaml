@@ -1,27 +1,19 @@
 functionality:
-  name: generate_report
+  name: example2_python_with_setup
   description: A minimal example component.
   arguments:
     - type: file
       name: --input
-      example: data.csv
-      required: true
-    - type: integer
-      name: --year
-      example: 2012
-      required: true
-    - type: integer
-      name: --min_duration_per_project
-      example: 100
+      example: filtered.csv
       required: true
     - type: file
       name: --output
       direction: output
-      example: filtered.csv
+      example: report.pdf
       required: true
   resources:
     - type: python_script
-      path: filter_timesheets.py
+      path: generate_report.py
 platforms:
   - type: docker
     image: python:3.10-slim
@@ -34,3 +26,5 @@ platforms:
         packages:
           - anndata
           - pandas
+          - matplotlib
+          - reportlab
