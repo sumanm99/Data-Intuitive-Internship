@@ -1,1 +1,1 @@
-# Data-Intuitive-Internship
+# Data Intuitive-Internship
