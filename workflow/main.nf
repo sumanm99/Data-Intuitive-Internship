@@ -16,7 +16,7 @@ process filterTimesheets {
     script:
     """
     echo "${params.base}"
-    mnt/d/Data_Intuitive_Internship/GitHub/bin/example_python_with_setup --input ${input} --output ${outputDir}/filtered.csv --year ${year} --min_duration_per_project ${minDuration}
+    /mnt/d/Data_Intuitive_Internship/GitHub/bin/example_python_with_setup --input ${input} --output ${outputDir}/filtered.csv --year ${year} --min_duration_per_project ${minDuration}
     """
 }
 
@@ -29,7 +29,7 @@ process generateReport {
 
     script:
     """
-    mnt/d/Data_Intuitive_Internship/GitHub/bin/example2_python_with_setup --input ${filteredFile} --output ${filteredFile.getParent()}/report.pdf
+    /mnt/d/Data_Intuitive_Internship/GitHub/bin/example2_python_with_setup --input ${filteredFile} --output ${filteredFile.getParent()}/report.pdf
     """
 }
 
@@ -41,7 +41,7 @@ workflow {
     minDuration = params.minDuration
 
     // Run the Docker executable to filter data
-    filteredFile = filterTimesheets(input: input, outputDir: outputDir, year: year, minDuration: minDuration)
+    filteredFile = filterTimesheets(input, outputDir, year, minDuration)
 
     // Generate the report using the filtered data
     generateReport(filteredFile)

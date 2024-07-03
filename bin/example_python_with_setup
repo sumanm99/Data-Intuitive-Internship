@@ -420,9 +420,9 @@ RUN pip install --upgrade pip && \
   pip install --upgrade --no-cache-dir "anndata" "pandas"
 
 LABEL org.opencontainers.image.description="Companion container for running component example_python_with_setup"
-LABEL org.opencontainers.image.created="2024-07-01T09:10:08+02:00"
+LABEL org.opencontainers.image.created="2024-07-03T08:58:58+02:00"
 LABEL org.opencontainers.image.source="https://github.com/sumanm99/Data-Intuitive-Internship.git"
-LABEL org.opencontainers.image.revision="12a63b9eb2eae37a56a354bbbd1d3ef8b899f05a"
+LABEL org.opencontainers.image.revision="b07110fe8645ab486f03aaaa464b98d6a821d141"
 
 VIASHDOCKER
 }
