@@ -1,9 +1,9 @@
 .idea
 .nextflow
-target
-work
+target/
+work/
 .nextflow
-config.vsh
+config.vsh.yaml
 *.nextflow.log
 script.py
 *run
