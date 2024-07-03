@@ -28,3 +28,4 @@ platforms:
           - pandas
           - matplotlib
           - reportlab
+  - type: nextflow

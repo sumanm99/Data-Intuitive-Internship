@@ -34,3 +34,4 @@ platforms:
         packages:
           - anndata
           - pandas
+  - type: nextflow

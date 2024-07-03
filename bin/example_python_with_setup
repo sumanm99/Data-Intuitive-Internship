@@ -177,11 +177,19 @@ function ViashHelp {
   echo "Arguments:"
   echo "    --input"
   echo "        type: file, required parameter, file must exist"
-  echo "        example: filtered.csv"
+  echo "        example: data.csv"
+  echo ""
+  echo "    --year"
+  echo "        type: integer, required parameter"
+  echo "        example: 2012"
+  echo ""
+  echo "    --min_duration_per_project"
+  echo "        type: integer, required parameter"
+  echo "        example: 100"
   echo ""
   echo "    --output"
   echo "        type: file, required parameter, output, file must exist"
-  echo "        example: report.pdf"
+  echo "        example: filtered.csv"
 }
 
 ######## Helper functions for setting up Docker images for viash ########
@@ -409,12 +417,12 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip && \
-  pip install --upgrade --no-cache-dir "anndata" "pandas" "matplotlib"
+  pip install --upgrade --no-cache-dir "anndata" "pandas"
 
 LABEL org.opencontainers.image.description="Companion container for running component example_python_with_setup"
-LABEL org.opencontainers.image.created="2024-06-30T19:56:22+02:00"
+LABEL org.opencontainers.image.created="2024-07-01T09:10:08+02:00"
 LABEL org.opencontainers.image.source="https://github.com/sumanm99/Data-Intuitive-Internship.git"
-LABEL org.opencontainers.image.revision="c809d445e7eff16c1e5260bf38dd99656e1119f1"
+LABEL org.opencontainers.image.revision="12a63b9eb2eae37a56a354bbbd1d3ef8b899f05a"
 
 VIASHDOCKER
 }
@@ -583,6 +591,28 @@ while [[ $# -gt 0 ]]; do
             VIASH_PAR_INPUT=$(ViashRemoveFlags "$1")
             shift 1
             ;;
+        --year)
+            [ -n "$VIASH_PAR_YEAR" ] && ViashError Bad arguments for option \'--year\': \'$VIASH_PAR_YEAR\' \& \'$2\' - you should provide exactly one argument for this option. && exit 1
+            VIASH_PAR_YEAR="$2"
+            [ $# -lt 2 ] && ViashError Not enough arguments passed to --year. Use "--help" to get more information on the parameters. && exit 1
+            shift 2
+            ;;
+        --year=*)
+            [ -n "$VIASH_PAR_YEAR" ] && ViashError Bad arguments for option \'--year=*\': \'$VIASH_PAR_YEAR\' \& \'$2\' - you should provide exactly one argument for this option. && exit 1
+            VIASH_PAR_YEAR=$(ViashRemoveFlags "$1")
+            shift 1
+            ;;
+        --min_duration_per_project)
+            [ -n "$VIASH_PAR_MIN_DURATION_PER_PROJECT" ] && ViashError Bad arguments for option \'--min_duration_per_project\': \'$VIASH_PAR_MIN_DURATION_PER_PROJECT\' \& \'$2\' - you should provide exactly one argument for this option. && exit 1
+            VIASH_PAR_MIN_DURATION_PER_PROJECT="$2"
+            [ $# -lt 2 ] && ViashError Not enough arguments passed to --min_duration_per_project. Use "--help" to get more information on the parameters. && exit 1
+            shift 2
+            ;;
+        --min_duration_per_project=*)
+            [ -n "$VIASH_PAR_MIN_DURATION_PER_PROJECT" ] && ViashError Bad arguments for option \'--min_duration_per_project=*\': \'$VIASH_PAR_MIN_DURATION_PER_PROJECT\' \& \'$2\' - you should provide exactly one argument for this option. && exit 1
+            VIASH_PAR_MIN_DURATION_PER_PROJECT=$(ViashRemoveFlags "$1")
+            shift 1
+            ;;
         --output)
             [ -n "$VIASH_PAR_OUTPUT" ] && ViashError Bad arguments for option \'--output\': \'$VIASH_PAR_OUTPUT\' \& \'$2\' - you should provide exactly one argument for this option. && exit 1
             VIASH_PAR_OUTPUT="$2"
@@ -716,6 +746,14 @@ if [ -z ${VIASH_PAR_INPUT+x} ]; then
   ViashError '--input' is a required argument. Use "--help" to get more information on the parameters.
   exit 1
 fi
+if [ -z ${VIASH_PAR_YEAR+x} ]; then
+  ViashError '--year' is a required argument. Use "--help" to get more information on the parameters.
+  exit 1
+fi
+if [ -z ${VIASH_PAR_MIN_DURATION_PER_PROJECT+x} ]; then
+  ViashError '--min_duration_per_project' is a required argument. Use "--help" to get more information on the parameters.
+  exit 1
+fi
 if [ -z ${VIASH_PAR_OUTPUT+x} ]; then
   ViashError '--output' is a required argument. Use "--help" to get more information on the parameters.
   exit 1
@@ -748,6 +786,18 @@ if [ ! -z "$VIASH_PAR_INPUT" ] && [ ! -e "$VIASH_PAR_INPUT" ]; then
 fi
 
 # check whether parameters values are of the right type
+if [[ -n "$VIASH_PAR_YEAR" ]]; then
+  if ! [[ "$VIASH_PAR_YEAR" =~ ^[-+]?[0-9]+$ ]]; then
+    ViashError '--year' has to be an integer. Use "--help" to get more information on the parameters.
+    exit 1
+  fi
+fi
+if [[ -n "$VIASH_PAR_MIN_DURATION_PER_PROJECT" ]]; then
+  if ! [[ "$VIASH_PAR_MIN_DURATION_PER_PROJECT" =~ ^[-+]?[0-9]+$ ]]; then
+    ViashError '--min_duration_per_project' has to be an integer. Use "--help" to get more information on the parameters.
+    exit 1
+  fi
+fi
 if [[ -n "$VIASH_META_CPUS" ]]; then
   if ! [[ "$VIASH_META_CPUS" =~ ^[-+]?[0-9]+$ ]]; then
     ViashError 'cpus' has to be an integer. Use "--help" to get more information on the parameters.
@@ -865,17 +915,13 @@ trap clean_up EXIT
 trap interrupt INT SIGINT
 cat > "\$tempscript" << 'VIASHMAIN'
 import pandas as pd
-import matplotlib.pyplot as plt
-# from reportlab.lib.pagesizes import letter
-# from reportlab.lib import colors
-# from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
-# from reportlab.lib.styles import getSampleStyleSheet
-# from io import BytesIO
 
 ## VIASH START
 # The following code has been auto-generated by Viash.
 par = {
   'input': $( if [ ! -z ${VIASH_PAR_INPUT+x} ]; then echo "r'${VIASH_PAR_INPUT//\'/\'\"\'\"r\'}'"; else echo None; fi ),
+  'year': $( if [ ! -z ${VIASH_PAR_YEAR+x} ]; then echo "int(r'${VIASH_PAR_YEAR//\'/\'\"\'\"r\'}')"; else echo None; fi ),
+  'min_duration_per_project': $( if [ ! -z ${VIASH_PAR_MIN_DURATION_PER_PROJECT+x} ]; then echo "int(r'${VIASH_PAR_MIN_DURATION_PER_PROJECT//\'/\'\"\'\"r\'}')"; else echo None; fi ),
   'output': $( if [ ! -z ${VIASH_PAR_OUTPUT+x} ]; then echo "r'${VIASH_PAR_OUTPUT//\'/\'\"\'\"r\'}'"; else echo None; fi )
 }
 meta = {
@@ -898,69 +944,20 @@ dep = {
 
 ## VIASH END
 
-# # Generate some data
-# data = {
-#     "Project": ["Project A", "Project B", "Project C", "Project D"],
-#     "Hours": [120, 80, 90, 150],
-#     "Year": [2023, 2023, 2022, 2022]
-# }
-# df = pd.DataFrame(data)
-#
-# # Create a bar plot
-# plt.figure(figsize=(10, 6))
-# df.groupby("Project")["Hours"].sum().plot(kind='bar', color='skyblue')
-# plt.title('Hours Spent on Projects')
-# plt.xlabel('Project')
-# plt.ylabel('Hours')
-# plt.tight_layout()
-#
-# # Save plot to a BytesIO object
-# img_buffer = BytesIO()
-# plt.savefig(img_buffer, format='png')
-# img_buffer.seek(0)
-# plt.close()
-#
-# # Create a PDF report
-# pdf_buffer = BytesIO()
-# doc = SimpleDocTemplate(pdf_buffer, pagesize=letter)
-# styles = getSampleStyleSheet()
-# elements = []
-#
-# # Add text
-# title = Paragraph("Project Report", styles['Title'])
-# elements.append(title)
-#
-# summary = Paragraph("This report includes an analysis of hours spent on different projects.", styles['BodyText'])
-# elements.append(summary)
-#
-# # Add table
-# table_data = [['Project', 'Hours', 'Year']] + df.values.tolist()
-# table = Table(table_data)
-# table.setStyle(TableStyle([
-#     ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-#     ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-#     ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-#     ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-#     ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-#     ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-#     ('GRID', (0, 0), (-1, -1), 1, colors.black),
-# ]))
-# elements.append(table)
-#
-# # Add graph
-# from reportlab.platypus import Image
-# elements.append(Paragraph("Hours Spent on Projects (Bar Plot)", styles['Heading2']))
-# elements.append(Image(img_buffer, width=400, height=200))
-#
-# # Build PDF
-# doc.build(elements)
-# pdf_buffer.seek(0)
-#
-# # Save the PDF to a file
-# with open("report.pdf", "wb") as f:
-#     f.write(pdf_buffer.getbuffer())
-
-print("PDF report created successfully.")
+#Read input file
+df = pd.read_csv(par['input'])
+# Convert time to datetime
+df['time'] = pd.to_datetime(df['time_start'])
+# Filter entries from the specified year
+df_filtered_year = df[df['time'].dt.year == par['year']]
+# Calculate total hours per project
+project_hours = df_filtered_year.groupby('project')['duration'].sum().reset_index()
+# Filter projects with total hours above the threshold
+projects_above_threshold = project_hours[project_hours['duration'] >= par['min_duration_per_project']]
+# Filter the original dataframe to keep only the projects above the threshold
+df_filtered = df_filtered_year[df_filtered_year['project'].isin(projects_above_threshold['project'])]
+# Save the filtered dataframe to a new CSV file
+df_filtered.iloc[:,:-1].to_csv(par['output'], index=False)
 VIASHMAIN
 python -B "\$tempscript" &
 wait "\$!"
