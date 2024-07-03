@@ -1,11 +1,11 @@
 functionality:
-  name: "example_python"
+  name: "generate_report"
   arguments:
   - type: "file"
     name: "--input"
     info: null
     example:
-    - "file.txt"
+    - "filtered.csv"
     must_exist: true
     create_parent: true
     required: true
@@ -17,7 +17,7 @@ functionality:
     name: "--output"
     info: null
     example:
-    - "output.txt"
+    - "report.pdf"
     must_exist: true
     create_parent: true
     required: true
@@ -27,7 +27,7 @@ functionality:
     dest: "par"
   resources:
   - type: "python_script"
-    path: "script.py"
+    path: "generate_report.py"
     is_executable: true
   description: "A minimal example component."
   info: null
@@ -41,10 +41,22 @@ platforms:
   resolve_volume: "Automatic"
   chown: true
   setup_strategy: "ifneedbepullelsecachedbuild"
+  setup:
+  - type: "apt"
+    packages:
+    - "curl"
+    - "wget"
+    interactive: false
+  - type: "python"
+    user: false
+    packages:
+    - "anndata"
+    - "pandas"
+    - "matplotlib"
+    - "reportlab"
+    upgrade: true
   entrypoint: []
   cmd: null
-- type: "native"
-  id: "native"
 - type: "nextflow"
   id: "nextflow"
   directives:
@@ -89,10 +101,10 @@ platforms:
   debug: false
   container: "docker"
 info:
-  config: "/mnt/d/Data_Intuitive_Internship/GitHub/config.vsh.yaml"
+  config: "/mnt/d/Data_Intuitive_Internship/GitHub/generate_report/config.vsh.yaml"
   platform: "nextflow"
-  output: "bin"
-  executable: "bin/example_python"
+  output: "generate_report"
+  executable: "generate_report/generate_report"
   viash_version: "0.8.6"
   git_commit: "6cdb62fb2c682b6949130c82a60537f6921547b5"
   git_remote: "https://github.com/sumanm99/Data-Intuitive-Internship.git"

@@ -1,5 +1,5 @@
 functionality:
-  name: example2_python_with_setup
+  name: generate_report
   description: A minimal example component.
   arguments:
     - type: file

@@ -1,5 +1,5 @@
 functionality:
-  name: example_python_with_setup
+  name: filter_timesheets
   description: A minimal example component.
   arguments:
     - type: file

@@ -1,0 +1,9 @@
+.idea
+.nextflow
+target
+work
+.nextflow
+config.vsh
+*.nextflow.log
+script.py
+*run

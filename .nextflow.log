@@ -1,77 +1,57 @@
-Jun-29 21:14:57.735 [main] DEBUG nextflow.cli.Launcher - $> nextflow run hello
-Jun-29 21:14:57.892 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.2
-Jun-29 21:14:57.947 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/suman/.nextflow/plugins; core-plugins: nf-amazon@2.5.2,nf-azure@1.6.0,nf-cloudcache@0.4.1,nf-codecommit@0.2.0,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2,nf-tower@1.9.1,nf-wave@1.4.2
-Jun-29 21:14:57.979 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
-Jun-29 21:14:57.984 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
-Jun-29 21:14:57.992 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.10.0 in 'deployment' mode
-Jun-29 21:14:58.044 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
-Jun-29 21:14:58.072 [main] DEBUG nextflow.scm.ProviderConfig - Using SCM config path: /home/suman/.nextflow/scm
-Jun-29 21:14:58.921 [main] DEBUG nextflow.scm.ProviderConfig - Detected SCM config: [providers:[github:[user:sumanm99, platform:github, password:ghp****]]]
-Jun-29 21:14:58.956 [main] DEBUG nextflow.scm.RepositoryFactory - Found Git repository result: [RepositoryFactory]
-Jun-29 21:14:58.976 [main] DEBUG nextflow.scm.AssetManager - Listing projects in folder: /home/suman/.nextflow/assets
-Jun-29 21:14:59.057 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/suman/.nextflow/assets/nextflow-io/hello/.git/config; branch: master; remote: origin; url: https://github.com/nextflow-io/hello.git
-Jun-29 21:14:59.100 [main] DEBUG nextflow.scm.AssetManager - Git config: /home/suman/.nextflow/assets/nextflow-io/hello/.git/config; branch: master; remote: origin; url: https://github.com/nextflow-io/hello.git
-Jun-29 21:15:00.048 [main] INFO  nextflow.scm.AssetManager - NOTE: Your local project version looks outdated - a different revision is available in the remote repository [7588c46ffe]
-Jun-29 21:15:00.076 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /home/suman/.nextflow/assets/nextflow-io/hello/nextflow.config
-Jun-29 21:15:00.082 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/suman/.nextflow/assets/nextflow-io/hello/nextflow.config
-Jun-29 21:15:00.110 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/suman/.nextflow/secrets/store.json
-Jun-29 21:15:00.115 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@76536c53] - activable => nextflow.secret.LocalSecretsProvider@76536c53
-Jun-29 21:15:00.148 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
-Jun-29 21:15:00.247 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
-Jun-29 21:15:00.251 [main] DEBUG nextflow.cli.CmdRun - Launching `https://github.com/nextflow-io/hello` [maniac_curie] DSL2 - revision: 4eab81bd42 [master]
-Jun-29 21:15:00.257 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
-Jun-29 21:15:00.258 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
-Jun-29 21:15:00.376 [main] DEBUG nextflow.Session - Session UUID: 9be00eca-f429-4e7e-a931-6214bfaee6e8
-Jun-29 21:15:00.378 [main] DEBUG nextflow.Session - Run name: maniac_curie
-Jun-29 21:15:00.379 [main] DEBUG nextflow.Session - Executor pool size: 8
-Jun-29 21:15:00.401 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
-Jun-29 21:15:00.414 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jun-29 21:15:00.456 [main] DEBUG nextflow.cli.CmdRun - 
-  Version: 24.04.2 build 5914
-  Created: 29-05-2024 06:19 UTC (08:19 CEST)
+Jul-03 23:33:52.401 [main] DEBUG nextflow.cli.Launcher - $> nextflow run generate_report/main.nf --input output/filtered.csv --output output/report.pdf --publishDir generate_report -with-docker
+Jul-03 23:33:52.660 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.5
+Jul-03 23:33:52.703 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /mnt/d/Data_Intuitive_Internship/GitHub/generate_report/nextflow.config
+Jul-03 23:33:52.710 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/d/Data_Intuitive_Internship/GitHub/generate_report/nextflow.config
+Jul-03 23:33:52.768 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-03 23:33:54.345 [main] DEBUG nextflow.config.ConfigBuilder - Enabling execution in Docker container as requested by cli option `-with-docker -`
+Jul-03 23:33:54.386 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Jul-03 23:33:54.440 [main] INFO  nextflow.cli.CmdRun - Launching `generate_report/main.nf` [reverent_volhard] DSL2 - revision: ae5d3d6f6f
+Jul-03 23:33:54.468 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/home/suman/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
+Jul-03 23:33:54.470 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-03 23:33:54.497 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-03 23:33:54.503 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-03 23:33:54.511 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-03 23:33:54.539 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-03 23:33:54.647 [main] DEBUG nextflow.Session - Session uuid: f9d226ec-9dbf-4301-9b9a-b8e7008c939a
+Jul-03 23:33:54.648 [main] DEBUG nextflow.Session - Run name: reverent_volhard
+Jul-03 23:33:54.649 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-03 23:33:54.709 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.04.5 build 5708
+  Created: 15-07-2022 16:09 UTC (18:09 CEST)
   System: Linux 5.15.153.1-microsoft-standard-WSL2
-  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 11.0.23+9-post-Debian-1deb11u1
+  Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 11.0.23+9-post-Debian-1deb11u1
   Encoding: UTF-8 (UTF-8)
-  Process: 4828@DESKTOP-FCL0U3R [127.0.1.1]
-  CPUs: 8 - Mem: 3.8 GB (2.5 GB) - Swap: 1 GB (1023.2 MB)
-Jun-29 21:15:00.521 [main] DEBUG nextflow.Session - Work-dir: /mnt/d/Data_Intuitive_Internship/work [v9fs]
-Jun-29 21:15:00.523 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /home/suman/.nextflow/assets/nextflow-io/hello/bin
-Jun-29 21:15:00.543 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
-Jun-29 21:15:00.567 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
-Jun-29 21:15:00.636 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
-Jun-29 21:15:00.658 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
-Jun-29 21:15:00.894 [main] DEBUG nextflow.Session - Session start
-Jun-29 21:15:01.240 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
-Jun-29 21:15:01.475 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
-Jun-29 21:15:01.476 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
-Jun-29 21:15:01.491 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
-Jun-29 21:15:01.505 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=3.8 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
-Jun-29 21:15:01.511 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
-Jun-29 21:15:01.717 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: sayHello
-Jun-29 21:15:01.721 [main] DEBUG nextflow.Session - Igniting dataflow network (2)
-Jun-29 21:15:01.723 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > sayHello
-Jun-29 21:15:01.727 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
-  Script_1ee30fd59bf75db2: /home/suman/.nextflow/assets/nextflow-io/hello/main.nf
-Jun-29 21:15:01.728 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
-Jun-29 21:15:01.732 [main] DEBUG nextflow.Session - Session await
-Jun-29 21:15:02.168 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jun-29 21:15:02.175 [Task submitter] INFO  nextflow.Session - [6e/efc903] Submitted process > sayHello (1)
-Jun-29 21:15:02.206 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jun-29 21:15:02.209 [Task submitter] INFO  nextflow.Session - [c6/95be1f] Submitted process > sayHello (2)
-Jun-29 21:15:02.248 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jun-29 21:15:02.251 [Task submitter] INFO  nextflow.Session - [81/1ca127] Submitted process > sayHello (3)
-Jun-29 21:15:02.278 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: sayHello (1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/work/6e/efc903462308cd8da52d9fac4c7b58]
-Jun-29 21:15:02.281 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=24; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
-Jun-29 21:15:02.291 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
-Jun-29 21:15:02.296 [Task submitter] INFO  nextflow.Session - [b6/d1acc7] Submitted process > sayHello (4)
-Jun-29 21:15:02.305 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: sayHello (2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/work/c6/95be1f994a93c16feb0fdd81b15810]
-Jun-29 21:15:02.331 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: sayHello (3); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/work/81/1ca127e060d360e6245f8b4cc7dc3d]
-Jun-29 21:15:02.354 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 4; name: sayHello (4); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/work/b6/d1acc72fab413170ba373b53849ccf]
-Jun-29 21:15:02.381 [main] DEBUG nextflow.Session - Session await > all processes finished
-Jun-29 21:15:02.455 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
-Jun-29 21:15:02.457 [main] DEBUG nextflow.Session - Session await > all barriers passed
-Jun-29 21:15:02.462 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
-Jun-29 21:15:02.475 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=4; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=162ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=4; peakCpus=4; peakMemory=0; ]
-Jun-29 21:15:02.633 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
-Jun-29 21:15:02.685 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
-Jun-29 21:15:02.687 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
+  Process: 44874@DESKTOP-FCL0U3R [127.0.1.1]
+  CPUs: 8 - Mem: 3.8 GB (1.9 GB) - Swap: 1 GB (1023.2 MB)
+Jul-03 23:33:54.787 [main] DEBUG nextflow.Session - Work-dir: /mnt/d/Data_Intuitive_Internship/GitHub/work [v9fs]
+Jul-03 23:33:54.790 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/d/Data_Intuitive_Internship/GitHub/generate_report/bin
+Jul-03 23:33:54.812 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-03 23:33:54.836 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-03 23:33:54.898 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-03 23:33:54.918 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-03 23:33:55.137 [main] DEBUG nextflow.Session - Session start invoked
+Jul-03 23:34:02.499 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-03 23:34:03.402 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-03 23:34:03.403 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-03 23:34:03.412 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-03 23:34:03.422 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=3.8 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-03 23:34:03.691 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-03 23:34:03.693 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-03 23:34:03.715 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: generate_report_process, generate_report:processWf:generate_report_process, generate_report:publishStatesSimpleWf:publishStatesProc, publishStatesProc
+Jul-03 23:34:03.722 [main] DEBUG nextflow.Session - Ignite dataflow network (4)
+Jul-03 23:34:03.725 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > generate_report:processWf:generate_report_process
+Jul-03 23:34:03.727 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > generate_report:publishStatesSimpleWf:publishStatesProc
+Jul-03 23:34:03.728 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jul-03 23:34:03.732 [main] DEBUG nextflow.Session - Session await
+Jul-03 23:34:04.117 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-03 23:34:04.127 [Task submitter] INFO  nextflow.Session - [67/c8ec70] Submitted process > generate_report:processWf:generate_report_process (run)
+Jul-03 23:34:07.921 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: generate_report:processWf:generate_report_process (run); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/GitHub/work/67/c8ec7092420cbd2d6d8ca91dc0abdf]
+Jul-03 23:34:08.132 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-03 23:34:08.134 [Task submitter] INFO  nextflow.Session - [d8/12565d] Submitted process > generate_report:publishStatesSimpleWf:publishStatesProc (run)
+Jul-03 23:34:08.978 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: generate_report:publishStatesSimpleWf:publishStatesProc (run); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/GitHub/work/d8/12565d99f186566a4d489bdeb3b99b]
+Jul-03 23:34:09.011 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=4; maxSize=4; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-03 23:34:09.016 [main] DEBUG nextflow.Session - Session await > all process finished
+Jul-03 23:34:09.020 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-03 23:34:09.059 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=2; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=4.5s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Jul-03 23:34:09.295 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-03 23:34:09.355 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

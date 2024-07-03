@@ -1,13 +1,33 @@
 functionality:
-  name: "example_python"
+  name: "filter_timesheets"
   arguments:
   - type: "file"
     name: "--input"
     info: null
     example:
-    - "file.txt"
+    - "data.csv"
     must_exist: true
     create_parent: true
+    required: true
+    direction: "input"
+    multiple: false
+    multiple_sep: ":"
+    dest: "par"
+  - type: "integer"
+    name: "--year"
+    info: null
+    example:
+    - 2012
+    required: true
+    direction: "input"
+    multiple: false
+    multiple_sep: ":"
+    dest: "par"
+  - type: "integer"
+    name: "--min_duration_per_project"
+    info: null
+    example:
+    - 100
     required: true
     direction: "input"
     multiple: false
@@ -17,7 +37,7 @@ functionality:
     name: "--output"
     info: null
     example:
-    - "output.txt"
+    - "filtered.csv"
     must_exist: true
     create_parent: true
     required: true
@@ -27,7 +47,7 @@ functionality:
     dest: "par"
   resources:
   - type: "python_script"
-    path: "script.py"
+    path: "filter_timesheets.py"
     is_executable: true
   description: "A minimal example component."
   info: null
@@ -41,10 +61,20 @@ platforms:
   resolve_volume: "Automatic"
   chown: true
   setup_strategy: "ifneedbepullelsecachedbuild"
+  setup:
+  - type: "apt"
+    packages:
+    - "curl"
+    - "wget"
+    interactive: false
+  - type: "python"
+    user: false
+    packages:
+    - "anndata"
+    - "pandas"
+    upgrade: true
   entrypoint: []
   cmd: null
-- type: "native"
-  id: "native"
 - type: "nextflow"
   id: "nextflow"
   directives:
@@ -89,10 +119,10 @@ platforms:
   debug: false
   container: "docker"
 info:
-  config: "/mnt/d/Data_Intuitive_Internship/GitHub/config.vsh.yaml"
+  config: "/mnt/d/Data_Intuitive_Internship/GitHub/filter_timesheets/config.vsh.yaml"
   platform: "nextflow"
-  output: "bin"
-  executable: "bin/example_python"
+  output: "filter_timesheets"
+  executable: "filter_timesheets/filter_timesheets"
   viash_version: "0.8.6"
   git_commit: "6cdb62fb2c682b6949130c82a60537f6921547b5"
   git_remote: "https://github.com/sumanm99/Data-Intuitive-Internship.git"
