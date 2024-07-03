@@ -2909,7 +2909,7 @@ meta = [
     "platform" : "nextflow",
     "output" : "target/nextflow/generate_report",
     "viash_version" : "0.8.6",
-    "git_commit" : "6cdb62fb2c682b6949130c82a60537f6921547b5",
+    "git_commit" : "db4ec0a63605325b9abfb60d8ef9224102a41ae6",
     "git_remote" : "https://github.com/sumanm99/Data-Intuitive-Internship.git"
   }
 }'''))

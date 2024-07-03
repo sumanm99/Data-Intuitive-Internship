@@ -1,0 +1,57 @@
+Jul-04 00:31:34.967 [main] DEBUG nextflow.cli.Launcher - $> nextflow run filter_timesheets/main.nf --input data/data.csv --year 2012 --min_duration_per_project 100 --output output/filtered.csv --publishDir . -with-docker
+Jul-04 00:31:35.071 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 22.04.5
+Jul-04 00:31:35.107 [main] DEBUG nextflow.config.ConfigBuilder - Found config base: /mnt/d/Data_Intuitive_Internship/GitHub/filter_timesheets/nextflow.config
+Jul-04 00:31:35.111 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /mnt/d/Data_Intuitive_Internship/GitHub/filter_timesheets/nextflow.config
+Jul-04 00:31:35.154 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Jul-04 00:31:36.735 [main] DEBUG nextflow.config.ConfigBuilder - Enabling execution in Docker container as requested by cli option `-with-docker -`
+Jul-04 00:31:36.762 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declararion
+Jul-04 00:31:36.831 [main] INFO  nextflow.cli.CmdRun - Launching `filter_timesheets/main.nf` [disturbed_bose] DSL2 - revision: 447a1a66e8
+Jul-04 00:31:36.874 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/home/suman/.nextflow/plugins; core-plugins: nf-amazon@1.7.2,nf-azure@0.13.2,nf-console@1.0.3,nf-ga4gh@1.0.3,nf-google@1.1.4,nf-sqldb@0.4.0,nf-tower@1.4.0
+Jul-04 00:31:36.877 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Jul-04 00:31:36.900 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Jul-04 00:31:36.907 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Jul-04 00:31:36.915 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+Jul-04 00:31:36.940 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Jul-04 00:31:37.047 [main] DEBUG nextflow.Session - Session uuid: 444dc375-2d6b-4648-be7b-c58b5feeb48c
+Jul-04 00:31:37.048 [main] DEBUG nextflow.Session - Run name: disturbed_bose
+Jul-04 00:31:37.049 [main] DEBUG nextflow.Session - Executor pool size: 8
+Jul-04 00:31:37.130 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 22.04.5 build 5708
+  Created: 15-07-2022 16:09 UTC (18:09 CEST)
+  System: Linux 5.15.153.1-microsoft-standard-WSL2
+  Runtime: Groovy 3.0.10 on OpenJDK 64-Bit Server VM 11.0.23+9-post-Debian-1deb11u1
+  Encoding: UTF-8 (UTF-8)
+  Process: 46026@DESKTOP-FCL0U3R [127.0.1.1]
+  CPUs: 8 - Mem: 3.8 GB (2 GB) - Swap: 1 GB (1023.2 MB)
+Jul-04 00:31:37.211 [main] DEBUG nextflow.Session - Work-dir: /mnt/d/Data_Intuitive_Internship/GitHub/work [v9fs]
+Jul-04 00:31:37.213 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/d/Data_Intuitive_Internship/GitHub/filter_timesheets/bin
+Jul-04 00:31:37.226 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Jul-04 00:31:37.243 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Jul-04 00:31:37.294 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Jul-04 00:31:37.315 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 9; maxThreads: 1000
+Jul-04 00:31:37.561 [main] DEBUG nextflow.Session - Session start invoked
+Jul-04 00:31:45.640 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Jul-04 00:31:46.809 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-04 00:31:46.809 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-04 00:31:46.819 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Jul-04 00:31:46.829 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=8; memory=3.8 GB; capacity=8; pollInterval=100ms; dumpInterval=5m
+Jul-04 00:31:47.082 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Jul-04 00:31:47.083 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Jul-04 00:31:47.110 [main] DEBUG nextflow.Session - Workflow process names [dsl2]: filter_timesheets:publishStatesSimpleWf:publishStatesProc, filter_timesheets_process, filter_timesheets:processWf:filter_timesheets_process, publishStatesProc
+Jul-04 00:31:47.117 [main] DEBUG nextflow.Session - Ignite dataflow network (4)
+Jul-04 00:31:47.120 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > filter_timesheets:processWf:filter_timesheets_process
+Jul-04 00:31:47.125 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > filter_timesheets:publishStatesSimpleWf:publishStatesProc
+Jul-04 00:31:47.130 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Jul-04 00:31:47.131 [main] DEBUG nextflow.Session - Session await
+Jul-04 00:31:47.457 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-04 00:31:47.469 [Task submitter] INFO  nextflow.Session - [36/5702fb] Submitted process > filter_timesheets:processWf:filter_timesheets_process (run)
+Jul-04 00:31:50.935 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: filter_timesheets:processWf:filter_timesheets_process (run); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/GitHub/work/36/5702fb9b3adbe76ea6319d7bb68c13]
+Jul-04 00:31:51.251 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Jul-04 00:31:51.254 [Task submitter] INFO  nextflow.Session - [5a/c54a04] Submitted process > filter_timesheets:publishStatesSimpleWf:publishStatesProc (run)
+Jul-04 00:31:52.440 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: filter_timesheets:publishStatesSimpleWf:publishStatesProc (run); status: COMPLETED; exit: 0; error: -; workDir: /mnt/d/Data_Intuitive_Internship/GitHub/work/5a/c54a04433a928aec9678e15fbdf46e]
+Jul-04 00:31:52.466 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=4; maxSize=4; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Jul-04 00:31:52.470 [main] DEBUG nextflow.Session - Session await > all process finished
+Jul-04 00:31:52.475 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Jul-04 00:31:52.527 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=2; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=4.4s; failedDuration=0ms; cachedDuration=0ms;loadCpus=0; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+Jul-04 00:31:52.569 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Jul-04 00:31:52.617 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
