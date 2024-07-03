@@ -6,4 +6,4 @@ work/
 config.vsh.yaml
 *.nextflow.log
 script.py
-*run
+*/.build.yaml
