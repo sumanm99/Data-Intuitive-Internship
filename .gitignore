@@ -4,8 +4,9 @@ target/
 work/
 .nextflow
 config.vsh.yaml
-*.nextflow.log
+*.nextflow.log.*
 script.py
 nextflow
 *.build.yaml
 *.config.vsh.yaml
+*run.*
