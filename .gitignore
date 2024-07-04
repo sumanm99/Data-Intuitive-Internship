@@ -1,12 +1,11 @@
 .idea
-.nextflow
-target/
-work/
-.nextflow
 config.vsh.yaml
-*.nextflow.log.*
 script.py
-nextflow
-*.build.yaml
-*.config.vsh.yaml
-*run.*
+
+# Nextflow
+work/
+.nextflow*
+
+# Viash
+target/
+run*
